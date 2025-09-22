@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="traveltest" >
+      <test name="travel test register">
+    <classes>
+      <!-- <class name="com.juaracoding.ecommerce.commons.RadioCheckBoxTest"></class> -->
+      <class name="com.juaracoding.traveltest.AppTest"></class>
+    </classes>
+    </test>
+</suite>
