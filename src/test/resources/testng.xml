@@ -3,7 +3,6 @@
 <suite name="traveltest" >
       <test name="travel test register">
     <classes>
-      <!-- <class name="com.juaracoding.ecommerce.commons.RadioCheckBoxTest"></class> -->
       <class name="com.juaracoding.traveltest.AppTest"></class>
     </classes>
     </test>
