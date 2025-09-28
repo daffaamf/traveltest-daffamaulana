@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -17,6 +18,8 @@ public class AppTest{
     @BeforeMethod
     public void BeforeMethod() {
         //setup driver
+        // ChromeOptions options = new ChromeOptions();
+        // options.addArguments("--incognito");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://demo.guru99.com/test/newtours/register.php");
@@ -27,39 +30,41 @@ public class AppTest{
 
         //code isi form registrasi
         driver.findElement(By.name("firstName")).sendKeys("Daffa");
-        Thread.sleep(800);
+        Thread.sleep(500);
         driver.findElement(By.name("lastName")).sendKeys("Maulana");
-        Thread.sleep(800);
+        Thread.sleep(500);
         driver.findElement(By.name("phone")).sendKeys("082188882011");
-        Thread.sleep(800);
+        Thread.sleep(500);
         driver.findElement(By.name("userName")).sendKeys("daffa@gmail.com");
-        Thread.sleep(800);
+        Thread.sleep(500);
 
         driver.findElement(By.name("address1")).sendKeys("Jl. Anapuri No. 17");
-        Thread.sleep(800);
+        Thread.sleep(500);
         driver.findElement(By.name("city")).sendKeys("Bandung");
-        Thread.sleep(800);
+        Thread.sleep(500);
         driver.findElement(By.name("state")).sendKeys("Jawa Barat");
-        Thread.sleep(800);
+        Thread.sleep(500);
         driver.findElement(By.name("postalCode")).sendKeys("40123");
-        Thread.sleep(800);
+        Thread.sleep(500);
         Select select = new Select(driver.findElement(By.name("country")));
         select.selectByVisibleText("INDONESIA");
 
         driver.findElement(By.name("email")).sendKeys("daffa");
-        Thread.sleep(800);
+        Thread.sleep(500);
         driver.findElement(By.name("password")).sendKeys("pass123");
-        Thread.sleep(800);
+        Thread.sleep(500);
         driver.findElement(By.name("confirmPassword")).sendKeys("pass123");
-        Thread.sleep(800);
+        Thread.sleep(500);
 
         // scroll ke element karena ada popup iklan
         WebElement submitBtn = driver.findElement(By.name("submit"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", submitBtn);
         Thread.sleep(1000);
+        // saya pakai JS karna selenium tidak bisa menggunakan method scroll//
 
         // klik tombol pakai JavaScript agar tidak gagal meski ketutupan element lain
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", submitBtn);
+        // dan penggunaan JS untuk click tombol submit karna terhalang oleh iklan bawaan web//
 
          //  validate apakah register berhasil
         String actual1 = driver.getCurrentUrl();
